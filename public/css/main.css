@@ -1,0 +1,133 @@
+.grid-2 {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+
+.topbar {
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+
+
+.user-div {
+    margin-right: 80px;
+}
+
+
+.grid-2-dasboard {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.grid-3-dasboard {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    gap: 20px;
+}
+
+
+
+.main-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.main-nav li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.main-nav li a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+
+.main-nav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+
+.genre-img {
+    width: 300px;
+    height: 300px;
+    background-color: #C3D1E9;
+}
+
+.row {
+    padding: 25px;
+}
+
+
+
+/* Modal */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35% !important;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+
+
+}
+
+/* Modal end */
+
+.playlist-card {
+    box-shadow: rgb(60 64 67 / 30%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;
+}
