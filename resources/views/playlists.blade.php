@@ -7,9 +7,10 @@
     <div class="row">
         <div class="" style="margin-top:20px;">
             <h1>Playlists</h1>
-            @foreach($Timeplaylists as $timeplaylist)
-
-            @foreach($songs as $song)
+            @if (!empty($Timeplaylists))
+            @foreach ($Timeplaylists as $timeplaylist)
+            
+            @foreach ($songs as $song)
             @if($timeplaylist == $song['id'])
             <div>             
                <p>{{$song['name']}}</p>
@@ -20,22 +21,31 @@
                
               </div>
             @endif
+            
             @endforeach
             @endforeach
-            <a href="">Opslaan</a>
+            @endif
+
+            <button class="btn btn-success" id="myBtn">Opslaan</button>
+            
             <div class="grid-3-dasboard">
               
+
+            @foreach($selectPlaylists as $selectPlaylist)
+            @if($selectPlaylist->user_id == $getID)
               <div class="playlist-card">
-                <h4>Playlist Titel</h4>
-                <a class="btn btn-block btn-primary" href="">Bewerken</a>
-                <a class="btn btn-block btn-danger" href="">Verdwijderen</a>
+                <h4>{{$selectPlaylist->name}}</h4>
+                
+                <a class="btn btn-block btn-primary" href="{{url('/playlist/' .$selectPlaylist->id)}}">Open</a>
+                <a class="btn btn-block btn-danger" href="{{url('delete-list/' .$selectPlaylist->id)}}">Verdwijderen</a>
               </div>
-             
+           @endif
+            @endforeach  
             </div>
             
             
             <div class="mainDiv-Modal-Add">
-                <button id="myBtn">Open Modal</button>
+                
 
                 <div id="myModal" class="modal">
 
@@ -48,7 +58,7 @@
                             <label for="name">Playlist Name</label>
                             <input name="name" type="text" class="form-control" placeholder="Enter Name of Your Playlist">
                         </div>
-                        
+                                                                  
                         <div class="form-group">
                             <button class="btn btn-block btn-primary" type="submit">Aanmaken</button>
                         </div>

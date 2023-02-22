@@ -36,15 +36,48 @@
                                 
                             </div>
                             <div class="form-group">
+                                <label for="songID">Voeg aan de tijdelijk playlist toe:</label>
                                 <input name="songID" id="songID" type="hidden" value="">
                             </div>
                             
                                                        
                             <div class="form-group">
-                                <input type="submit" value="add">
+                                <input type="submit" value="Opslaan">
                             </div>
                             
                             
+                          </form>
+
+
+
+                          <form action="{{url('add-toplaylist')}}" method="post">
+                            @csrf
+                            <div class="form-group">
+                              <label for="toPlaylists">Voeg aan de bestande playlists toe</label>
+
+                              <select name="toPlaylists" id="cars">
+                                @if(!empty($playlists))
+                                @foreach($playlists as $playlist)
+                                @if($playlist->user_id == $getID)
+                                <option value="{{$playlist->id}}">{{$playlist->name}}</option>
+                                @endif
+                                @endforeach
+
+                                @elseif(empty($playlists))
+                                  <div><p>Maak eerst een playlist</p></div>
+                                @endif
+                              </select>
+                            </div>
+
+                            <div class="form-group">
+                              <input type="hidden" id="songID2" name="songID2" value="">
+                            </div>
+
+                            <div class="form-group">
+                              <input type="submit" value="Toevoegen">
+                            </div>
+                           
+
                           </form>
                         </div>
                       
@@ -58,6 +91,7 @@
                         var btn = document.getElementById("{{$song->id}}");
 
                         var songID = document.getElementById("songID");
+                        var songID2 = document.getElementById("songID2");
 
                         var songTitel = document.getElementById("songTitel");
 
@@ -71,7 +105,8 @@
                         // When the user clicks the button, open the modal 
                         btn.onclick = function() {
                           modal.style.display = "block";
-                          songID.value = "{{$song->id}}";                                              
+                          songID.value = "{{$song->id}}";  
+                          songID2.value = "{{$song->id}}";                                            
                           
                         }
                         

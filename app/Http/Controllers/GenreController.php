@@ -12,6 +12,7 @@ class GenreController extends Controller
     public function index() {
         
 
+        
         $genres = Genre::get();
         
         return view('dashboard', ['genres' => $genres]);

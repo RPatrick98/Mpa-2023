@@ -64,9 +64,13 @@ class CustomAuthController extends Controller
 
     public function logout() {
         if(Session::has('loginId')){
-            Session::pull('loginId');
-            Session::pull('TimeInPlaylist');         
+            
+            app('App\Http\Controllers\SessionController')->deleteUserID();
+            app('App\Http\Controllers\SessionController')->deleteAllSongsTemp();
+
+                     
             return redirect('login');
         }
     }
+    
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\PlayListController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +27,16 @@ Route::post('login-user', [CustomAuthController::class, 'loginUser'])->name('log
 Route::get('/dashboard', [CustomAuthController::class, 'dashboard'])->middleware('isLoggedIn');
 Route::get('/genres/{id}', 'App\Http\Controllers\SongController@index');
 Route::get('/playlists', 'App\Http\Controllers\PlayListController@index');
-Route::get('delete-Playlist/{id}', 'App\Http\Controllers\PlayListController@deletePlaylist');
+Route::get('delete-Playlist/{id}', 'App\Http\Controllers\SessionController@deletePlaylist');
 
-//Route::post('add-playlist', [PlayListController::class, 'addPlaylist'])->name('add-playlist');   
-Route::post('add-Song', [PlayListController::class, 'addSongTime'])->name('add-Song');  
-//Route::post('/add-playlist', 'App\Http\Controllers\PlayListController@addPlaylist');
+Route::post('add-playlist', [PlayListController::class, 'addPlaylist'])->name('add-playlist');   
+Route::post('add-Song', [SessionController::class, 'addSongTime'])->name('add-Song');  
+Route::post('/add-playlist', 'App\Http\Controllers\PlayListController@addPlaylist');
+Route::get('/playlist/{id}', 'App\Http\Controllers\PlayListController@selectedPlaylist');
+Route::get('delete-Playlist-song/{id}/{list}', 'App\Http\Controllers\PlaylistController@deletePlaylistSong');
+Route::get('delete-list/{id}', 'App\Http\Controllers\PlayListController@deleteList');
+Route::post('update-name/{id}', 'App\Http\Controllers\PlayListController@updateName');
+Route::post('add-toplaylist', 'App\Http\Controllers\PlayListController@addtoPlaylist');
+Route::get('/berekenen/{id}', 'App\Http\Controllers\PlayListController@berekenen');
 
 Route::get('logout', [CustomAuthController::class, 'logout']);
