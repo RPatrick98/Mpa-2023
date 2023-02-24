@@ -17,6 +17,8 @@ class CustomAuthController extends Controller
     public function registration() {
         return view("auth.registration");
     }
+
+    //Hier wordt een nieuwe user aangemaakt
     public function registerUser(Request $request) {
         $request->validate([
             'name'=>'required',
@@ -35,6 +37,7 @@ class CustomAuthController extends Controller
         }
     }
 
+    //Deze functie wordt gebruikt om ingevoerde wachtwoord te vergelijken en daarna inloggen
     public function loginUser(Request $request) {
         $request->validate([
             'email'=>'required|email',
@@ -53,20 +56,25 @@ class CustomAuthController extends Controller
         }
     }
 
+    // in deze functie wordt id van gebruiker opgehaald en data van genres en in compact ingezet
     public function dashboard() {
         $data = array();
         if(Session::has('loginId')){
-            $data = User::where('id', '=', Session::get('loginId'))->first();
+            $getID = new SessionController();
+            $userID = $getID->getID();
+            $data = User::where('id', '=', $userID)->first();
             $genres = Genre::get();
         }
         return view('dashboard', compact('data'), ['genres' => $genres]);
     }
 
+    // Hier als een gebruiker gaat uitloggen worden functies van Session Controller opgeroepen
     public function logout() {
         if(Session::has('loginId')){
             
-            app('App\Http\Controllers\SessionController')->deleteUserID();
-            app('App\Http\Controllers\SessionController')->deleteAllSongsTemp();
+            $deleteSession= new SessionController();
+            $deleteSession->deleteUserID();
+            $deleteSession->deleteAllSongsTemp();
 
                      
             return redirect('login');

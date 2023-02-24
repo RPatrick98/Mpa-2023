@@ -12,7 +12,7 @@
 <body>
     <div class="continer">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4" style="margin-top:20px;">
+            <div class="form-user-cointeiner col-md-4 col-md-offset-4 ">
                 <h4>Registration</h4>
                 <hr>
                 <form action="{{route('register-user')}}" method="post">
@@ -39,10 +39,10 @@
                         <span class="text-danger">@error('password') {{$message}} @enderror</span>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-block btn-primary" type="submit">Register</button>
+                        <button class="btn btn-block btn-primary" type="submit">Registreren</button>
                     </div>
                     <br>
-                    <a href="login">Alredy Registered !! Login Here.</a>
+                    <a href="login">Heb je wel een account? !! Hier kan je inloggen.</a>
                 </form>
             </div>
             

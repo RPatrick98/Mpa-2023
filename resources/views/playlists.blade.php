@@ -32,7 +32,7 @@
               
 
             @foreach($selectPlaylists as $selectPlaylist)
-            @if($selectPlaylist->user_id == $getID)
+            @if($selectPlaylist->user_id == $userID)
               <div class="playlist-card">
                 <h4>{{$selectPlaylist->name}}</h4>
                 

@@ -34,7 +34,6 @@
       <!-- Trigger/Open The Modal -->
       <button class="btn btn-block btn-primary" id="myBtn">Naam veranderen</button>
 
-      <a href="{{url('berekenen/'. $playlist->id)}}" class="btn btn-success">Berekenen</a>
       <p>{{$arraySum}}</p>
      
    

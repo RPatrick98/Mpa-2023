@@ -12,8 +12,7 @@ use App\Models\Playlist;
 class SongController extends Controller
 {
     
-
-
+    //hier worden alle songs opgehaald en verstuurd naar een bijhorende genre
     public function index($id) {
         
         $songs = Song::get();
@@ -21,13 +20,15 @@ class SongController extends Controller
         $playlists = Playlist::get();
         $data = array();
         if(Session::has('loginId')){
-            $data = User::where('id', '=', Session::get('loginId'))->first();
+
+            $getID = new SessionController();
+            $userID = $getID->getID();
+            $data = User::where('id', '=', $userID)->first();
             $playlistName = Session::get('playlist');
-            $getID = app('App\Http\Controllers\SessionController')->getID();
             
         }
         
-        return view('genres', ['songs' => $songs], compact('id', 'data', 'playlists', 'getID'));
+        return view('genres', ['songs' => $songs], compact('id', 'data', 'playlists', 'userID'));
 
     }
 }

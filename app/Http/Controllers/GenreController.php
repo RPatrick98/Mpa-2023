@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 
 use App\Models\Genre;
 
+
+
 class GenreController extends Controller
 {
-    public function index() {
-        
 
-        
+    // Hier worden genres opgehaald en naar dashboard (Homepage) verstuurd
+    public function index() {
+         
         $genres = Genre::get();
         
         return view('dashboard', ['genres' => $genres]);

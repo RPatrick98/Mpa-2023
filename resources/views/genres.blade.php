@@ -58,7 +58,7 @@
                               <select name="toPlaylists" id="cars">
                                 @if(!empty($playlists))
                                 @foreach($playlists as $playlist)
-                                @if($playlist->user_id == $getID)
+                                @if($playlist->user_id == $userID)
                                 <option value="{{$playlist->id}}">{{$playlist->name}}</option>
                                 @endif
                                 @endforeach

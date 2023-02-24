@@ -9,9 +9,10 @@ use App\Models\User;
 
 class SessionController extends Controller
 {
-    // function to add song to session 
+    // Hier wordt song aan een session toegevoegd
 
    
+
     public function addSongTime(Request $request) {
 
         if(Session::has('loginId')){
@@ -24,7 +25,7 @@ class SessionController extends Controller
         return redirect('dashboard');
     }
 
-    // function to delete song from the session 
+    // Met deze functie wordt een geklikte song van een session verdwenen
 
     
 
@@ -87,7 +88,7 @@ class SessionController extends Controller
 
 
 
-    // function to get the user id 
+    // Hier wordt een id van ingelogde user van een session opgehaald
 
    
     public function getID(){
@@ -103,7 +104,7 @@ class SessionController extends Controller
     }
 
 
-    // function to get the playlist from the session 
+    // Hier worden alle opgeslagen songs van een session opgehaald
 
 
     public function getAllTempSong() {
@@ -113,21 +114,9 @@ class SessionController extends Controller
         return $TempInPlaylist;
     }
    
-    
 
 
-    // function to get playlist name from session 
-    
-
-
-
-
-
-   
-
-
-
-    // function to delete user id from the session 
+    // Met deze functie worden alle songd van een session verdwenens
 
    public function deleteAllSongsTemp() {
     Session::pull('TimeInPlaylist'); 
